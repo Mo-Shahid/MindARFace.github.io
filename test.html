@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.4/dist/mindar-face-three.prod.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-face.prod.js"></script> -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-face-aframe.prod.js"></script> -->
+    <link rel="shortcut icon" href="#">
+    <script type="module">
+      import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js";
+
+      const THREE = window.MINDAR.FACE.THREE;
+      const mindarThree = new window.MINDAR.FACE.MindARThree({
+	container: document.querySelector("#container"),
+      });
+      const {renderer, scene, camera} = mindarThree;
+      const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
+      scene.add(light);
+      const faceMesh = mindarThree.addFaceMesh();
+      const texture = new THREE.TextureLoader().load('./faceanchors.png');
+      faceMesh.material.map = texture;
+      faceMesh.material.transparent = true;
+      faceMesh.material.needsUpdate = true;
+      scene.add(faceMesh);
+      const loader = new GLTFLoader();
+      loader.load( 'steampunkHat.glb', function ( gltf ) {
+        gltf.scene.scale.set(10, 10, 10);
+        //scene.add( gltf.scene );
+      } );
+      const start = async() => {
+	await mindarThree.start();
+	renderer.setAnimationLoop(() => {
+	  renderer.render(scene, camera);
+	});
+      }
+      start();
+      hideButton.addEventListener("click", () => {
+        console.log("pressed");
+        faceMesh.material.visible = !faceMesh.material.visible;
+      });
+    </script>
+    <style>
+      body {
+	margin: 0;
+      }
+      #container {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+      }
+      #control {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="control">
+      <button id="hideButton">Hide</button>
+    </div>
+    <div id="container">
+    </div>
+  </body>
+</html>

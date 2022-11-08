@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-face.prod.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-face-aframe.prod.js"></script>
+    <link rel="shortcut icon" href="#">
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+
+        const sceneEl = document.querySelector('a-scene');
+
+        const captain = document.querySelector("#captain");
+        const steampunk = document.querySelector("#steampunk");
+        const gangster = document.querySelector("#gangster");
+        const pumpkin = document.querySelector("#pumpkin");
+        const santa = document.querySelector("#santaMask");
+
+        sceneEl.addEventListener("targetFound", event => {
+            //console.log("target found");
+        });
+
+        sceneEl.addEventListener("targetLost", event => {
+            //console.log("target lost");
+            let randItem = Math.floor(Math.random() * 5);
+            switch(randItem)
+            {
+              case 0:
+                captain.setAttribute("visible", "true");
+                steampunk.setAttribute("visible", "false");
+                gangster.setAttribute("visible", "false");
+                pumpkin.setAttribute("visible", "false");
+                santa.setAttribute("visible", "false");
+                break;
+              case 1:
+                captain.setAttribute("visible", "false");
+                steampunk.setAttribute("visible", "true");
+                gangster.setAttribute("visible", "false");
+                pumpkin.setAttribute("visible", "false");
+                santa.setAttribute("visible", "false");
+                break;
+              case 2:
+                captain.setAttribute("visible", "false");
+                steampunk.setAttribute("visible", "false");
+                gangster.setAttribute("visible", "true");
+                pumpkin.setAttribute("visible", "false");
+                santa.setAttribute("visible", "false");
+                break;
+              case 3:
+                captain.setAttribute("visible", "false");
+                steampunk.setAttribute("visible", "false");
+                gangster.setAttribute("visible", "false");
+                pumpkin.setAttribute("visible", "true");
+                santa.setAttribute("visible", "false");
+                break;
+              case 4:
+                captain.setAttribute("visible", "false");
+                steampunk.setAttribute("visible", "false");
+                gangster.setAttribute("visible", "false");
+                pumpkin.setAttribute("visible", "false");
+                santa.setAttribute("visible", "true");
+                break;
+              default:
+                break;
+            }
+        });
+      });
+    </script>
+
+
+  <style>
+    body {
+      margin: 0;
+    }
+    .ar-container {
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+    }
+    img{
+      display:block;
+      width:100%; 
+      height:100%;
+      object-fit: cover;
+      position: absolute;
+    }
+  </style>
+
+
+  </head>
+  <body>
+    <div class="ar-container">
+      <img src="./overlayMirrored.png" alt="test">
+
+      <a-scene mindar-face embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        
+        <a-assets>
+          <a-asset-item id="captainHatModel" src="./captainHat.glb"></a-asset-item>
+          <a-asset-item id="steampunkHatModel" src="./steampunkHat.glb"></a-asset-item>
+          <a-asset-item id="baseballCapModel" src="./baseballCap.glb"></a-asset-item>
+          <a-asset-item id="headModel" src="./headOccluder.glb"></a-asset-item>
+          <a-asset-item id="beardModel" src="./beard.glb"></a-asset-item>
+          <a-asset-item id="glassesModel" src="./glasses.glb"></a-asset-item>
+          <a-asset-item id="monocleModel" src="./monocle.glb"></a-asset-item>
+          <a-asset-item id="mustacheModel" src="./mustache.glb"></a-asset-item>
+          <a-asset-item id="pumpkinModel" src="./pumpkin.glb"></a-asset-item>
+          <a-asset-item id="santaMaskModel" src="./santaMask.glb"></a-asset-item>
+        </a-assets>
+        
+        <a-camera active="false" position="0 0 0"></a-camera>
+
+        <a-entity mindar-face-target="anchorIndex: 168">
+          <a-gltf-model mindar-face-occluder position="0 -0.3 0.15" rotation="0 0 0" scale="0.08 0.08 0.08" src="#headModel"></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="captain" visible="false">
+          <a-entity mindar-face-target="anchorIndex: 10">
+            <a-gltf-model id="captainHat" rotation="0 180 0" position="0 0.05 -0.7" scale="0.63 0.63 0.63" src="#captainHatModel"></a-gltf-model>
+          </a-entity>
+  
+          <a-entity mindar-face-target="anchorIndex: 164">
+            <a-gltf-model id="beard" rotation="20 0 0" position="0 -0.35 -0.1" scale="0.22 0.22 0.22" src="#beardModel"></a-gltf-model>
+          </a-entity>
+        </a-entity>
+
+        <a-entity id="steampunk" visible="true">
+          <a-entity mindar-face-target="anchorIndex: 10">
+            <a-gltf-model id="steampunkHat" rotation="0 0 0" position="0 0.4 -0.6" scale="4 4 4" src="#steampunkHatModel"></a-gltf-model>
+          </a-entity>
+  
+          <a-entity mindar-face-target="anchorIndex: 450">
+            <a-gltf-model id="monocle" rotation="0 0 20" position="0 0.1 0" scale="35 35 35" src="#monocleModel"></a-gltf-model>
+          </a-entity>
+  
+          <a-entity mindar-face-target="anchorIndex: 164">
+            <a-gltf-model id="mustache" rotation="0 0 0" position="0 -0.03 -0.03" scale="0.1 0.1 0.1" src="#mustacheModel"></a-gltf-model>
+          </a-entity>
+        </a-entity>
+
+        <a-entity mindar-face-target="anchorIndex: 10">
+          <a-gltf-model id="pumpkin" rotation="0 0 0" position="0 -0.12 0" scale="4 4 4" src="#pumpkinModel" visible="false"></a-gltf-model>
+        </a-entity>
+
+        <a-entity mindar-face-target="anchorIndex: 168">
+          <a-gltf-model id="santaMask" rotation="0 0 0" position="0 -0.21 -0.07" scale="7 7 7" src="#santaMaskModel" visible="false"></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="gangster" visible="false">
+          <a-entity mindar-face-target="anchorIndex: 10">
+            <a-gltf-model id="baseballCap" rotation="-10 0 0" position="0 0.45 -0.65" scale="0.47 0.47 0.47" src="#baseballCapModel"></a-gltf-model>
+          </a-entity>
+  
+          <a-entity mindar-face-target="anchorIndex: 168">
+            <a-gltf-model id="glasses" rotation="0 0 0" position="0 0.1 0" scale="9 9 5" src="#glassesModel"></a-gltf-model>
+          </a-entity>
+        </a-entity>
+
+      </a-scene>
+    </div>
+  </body>
+</html>
