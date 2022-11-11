@@ -18,7 +18,7 @@
         const gangster = document.querySelector("#gangster");
         const pumpkin = document.querySelector("#pumpkin");
         const santa = document.querySelector("#santaMask");
-		const glass = document.querySelector('#memeGlasses');
+	
 
         sceneEl.addEventListener("targetFound", event => {
             //console.log("target found");
@@ -35,7 +35,7 @@
                 gangster.setAttribute("visible", "false");
                 pumpkin.setAttribute("visible", "false");
                 santa.setAttribute("visible", "false");
-                glass.setAttribute("visible", "false");
+                
                 saudiHair.setAttribute("visible", "true");
                 /*captain.setAttribute("visible", "true");
                 steampunk.setAttribute("visible", "false");
@@ -122,7 +122,7 @@
   <body>
     <div class="ar-container">
       <img src="./overlayMirrored.png" alt="test">
-	  <img id="memeGlasses" src="./memeGlasses.png">
+	  
 
       <a-scene mindar-face embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         
@@ -137,7 +137,7 @@
           <a-asset-item id="mustacheModel" src="./mustache.glb"></a-asset-item>
           <a-asset-item id="pumpkinModel" src="./pumpkin.glb"></a-asset-item>
           <a-asset-item id="santaMaskModel" src="./santaMask.glb"></a-asset-item>
-          <a-asset-item id="memeGlassModel" src="./memeGlasses.png"></a-asset-item>
+          
           <a-asset-item id="saudiHair" src="./SaudiHair.glb"></a-asset-item>
         </a-assets>
         
@@ -178,14 +178,10 @@
         <a-entity mindar-face-target="anchorIndex: 168">
           <a-gltf-model id="santaMask" rotation="0 0 0" position="0 -0.21 -0.07" scale="7 7 7" src="#santaMaskModel" visible="false"></a-gltf-model>
         </a-entity>
-		
-		<a-entity mindar-face-target="anchorIndex: 168">
-          <a-gltf-model id="memeGlasses" rotation="0 0 0" position="0 -0.21 -0.07" scale="7 7 7" src="#memeGlassMode" visible="false"></a-gltf-model>
-        </a-entity>
-		
+			
 		<a-entity id="saudiHair" visible="true">
 		<a-entity mindar-face-target="anchorIndex: 168">
-          <a-gltf-model id="saudiHair" rotation="0 0 0" position="0 -0.21 -0.07" scale="0.1 0.1 0.1" src="#saudiHair" visible="false"></a-gltf-model>
+          <a-gltf-model id="saudiHair" rotation="0 0 0" position="0 -0.21 -0.07" scale="7 7 7" src="#saudiHair" visible="false"></a-gltf-model>
         </a-entity>
 
         <a-entity id="gangster" visible="false">
