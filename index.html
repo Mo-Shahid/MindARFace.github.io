@@ -12,6 +12,7 @@
 
         const sceneEl = document.querySelector('a-scene');
         		
+		const saudiHair = document.querySelector("#saudiHair");
         const captain = document.querySelector("#captain");
         const steampunk = document.querySelector("#steampunk");
         const gangster = document.querySelector("#gangster");
@@ -25,7 +26,7 @@
 
         sceneEl.addEventListener("targetLost", event => {
             //console.log("target lost");
-            let randItem = Math.floor(Math.random() * 6);
+            let randItem = Math.floor(Math.random() * 7);
             switch(randItem)
             {
               case 0:
@@ -70,6 +71,15 @@
                 pumpkin.setAttribute("visible", "false");
                 santa.setAttribute("visible", "false");
                 glass.setAttribute("visible", "true");
+                break;				
+			  case 6:
+                captain.setAttribute("visible", "false");
+                steampunk.setAttribute("visible", "false");
+                gangster.setAttribute("visible", "false");
+                pumpkin.setAttribute("visible", "false");
+                santa.setAttribute("visible", "false");
+                glass.setAttribute("visible", "false");
+                saudiHair.setAttribute("visible", "true");
                 break;
               default:
                 break;
@@ -105,6 +115,7 @@
   <body>
     <div class="ar-container">
       <img src="./overlayMirrored.png" alt="test">
+	  <img id="memeGlasses" src="./memeGlasses.png">
 
       <a-scene mindar-face embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         
@@ -120,6 +131,7 @@
           <a-asset-item id="pumpkinModel" src="./pumpkin.glb"></a-asset-item>
           <a-asset-item id="santaMaskModel" src="./santaMask.glb"></a-asset-item>
           <a-asset-item id="memeGlassModel" src="./memeGlasses.png"></a-asset-item>
+          <a-asset-item id="saudiHair" src="./SaudiHair.glb"></a-asset-item>
         </a-assets>
         
         <a-camera active="false" position="0 0 0"></a-camera>
@@ -162,6 +174,10 @@
 		
 		<a-entity mindar-face-target="anchorIndex: 168">
           <a-gltf-model id="memeGlasses" rotation="0 0 0" position="0 -0.21 -0.07" scale="7 7 7" src="#memeGlassMode" visible="false"></a-gltf-model>
+        </a-entity>
+		
+		<a-entity mindar-face-target="anchorIndex: 168">
+          <a-gltf-model id="saudiHair" rotation="0 0 0" position="0 -0.21 -0.07" scale="1 1 1" src="#saudiHair" visible="false"></a-gltf-model>
         </a-entity>
 
         <a-entity id="gangster" visible="false">
