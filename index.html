@@ -26,11 +26,18 @@
 
         sceneEl.addEventListener("targetLost", event => {
             //console.log("target lost");
-            let randItem = Math.floor(Math.random() * 7);
+            let randItem = Math.floor(Math.random() * 1);
             switch(randItem)
             {
               case 0:
-                captain.setAttribute("visible", "true");
+			   captain.setAttribute("visible", "false");
+                steampunk.setAttribute("visible", "false");
+                gangster.setAttribute("visible", "false");
+                pumpkin.setAttribute("visible", "false");
+                santa.setAttribute("visible", "false");
+                glass.setAttribute("visible", "false");
+                saudiHair.setAttribute("visible", "true");
+                /*captain.setAttribute("visible", "true");
                 steampunk.setAttribute("visible", "false");
                 gangster.setAttribute("visible", "false");
                 pumpkin.setAttribute("visible", "false");
@@ -81,7 +88,7 @@
                 glass.setAttribute("visible", "false");
                 saudiHair.setAttribute("visible", "true");
                 break;
-              default:
+              default:*/
                 break;
             }
         });
@@ -150,7 +157,7 @@
           </a-entity>
         </a-entity>
 
-        <a-entity id="steampunk" visible="true">
+        <a-entity id="steampunk" visible="false">
           <a-entity mindar-face-target="anchorIndex: 10">
             <a-gltf-model id="steampunkHat" rotation="0 0 0" position="0 0.4 -0.6" scale="4 4 4" src="#steampunkHatModel"></a-gltf-model>
           </a-entity>
@@ -176,8 +183,9 @@
           <a-gltf-model id="memeGlasses" rotation="0 0 0" position="0 -0.21 -0.07" scale="7 7 7" src="#memeGlassMode" visible="false"></a-gltf-model>
         </a-entity>
 		
+		<a-entity id="saudiHair" visible="true">
 		<a-entity mindar-face-target="anchorIndex: 168">
-          <a-gltf-model id="saudiHair" rotation="0 0 0" position="0 -0.21 -0.07" scale="1 1 1" src="#saudiHair" visible="false"></a-gltf-model>
+          <a-gltf-model id="saudiHair" rotation="0 0 0" position="0 -0.21 -0.07" scale="0.1 0.1 0.1" src="#saudiHair" visible="false"></a-gltf-model>
         </a-entity>
 
         <a-entity id="gangster" visible="false">
