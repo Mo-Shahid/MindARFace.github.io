@@ -114,11 +114,16 @@
       object-fit: cover;
       position: absolute;
     }
+	.rotated {
+  transform: rotate(90deg); /* Equal to rotateZ(45deg) */
+  
+}
   </style>
 
 
   </head>
   <body>
+  <div class="rotated">
     <div class="ar-container">
       <img src="./overlayMirrored.png" alt="test">
 
@@ -165,5 +170,6 @@
 
       </a-scene>
     </div>
+	</div>
   </body>
 </html>
