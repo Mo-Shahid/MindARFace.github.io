@@ -1,9 +1,9 @@
 <!doctype html>
 <html>
   <head>
-  <div class="rotated">
+  
     <meta name="viewport" content="width=2160, height=3840" aspect-ratio:"9/16;" />
-  </div>
+  
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-face.prod.js"></script>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-face-aframe.prod.js"></script>
@@ -128,9 +128,10 @@
   
     <div class="ar-container">
       <img src="./overlayMirrored.png" alt="test">
-
+		
+    	<div class="rotated">
       <a-scene mindar-face embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-        
+        </div>
         <a-assets>          
           <a-asset-item id="headModel" src="./headOccluder.glb"></a-asset-item>
           
