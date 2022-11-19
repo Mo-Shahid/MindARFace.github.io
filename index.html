@@ -2,7 +2,7 @@
 <html>
   <head>
   
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"  />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-face.prod.js"></script>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
@@ -79,18 +79,6 @@
 
 
   <style>
-  div {
-  height: 100%;
-  width: 100%; 
-	}
-	
-.innercontainer {
-  width: 100%;
-  height: 100%;
-  transform: rotateY(180deg);
-  transform-style: preserve-3d;
-  transition: all 1.0s linear;
-  }
 
     body {
       margin: 0;
@@ -101,29 +89,39 @@
       width:100%;
       height:100%;
       -webkit-transform: scaleX(-1);
+	 
       transform: scaleX(-1);
 	  //transform: scaleZ(-1);
     }
-    img{
-      display:block;
+    img
+	{
+      display:inline-block;
       width:100%;
       height:100%;
       object-fit: cover;
       position: absolute;
     }
+	.overlay {
+  position:absolute;
+  top:0;
+  width:100%;
+  z-index:25;
+  text-align:bottom;
+}
 	.rotated {
-  transform: rotate(90deg); /* Equal to rotateZ(45deg) */
+  transform: rotate(270deg); /* Equal to rotateZ(45deg) */
   
 }
   </style>
-
 
   </head>
   <body>
   
     <div class="ar-container">
-	
-      <img src="./overlayMirrored.png" alt="test">
+	<div class="overlay">
+    <img src="./overlayMirrored.png" alt="test">
+  </div>
+     
 		
     <div class="rotated">	
       <a-scene mindar-face embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
