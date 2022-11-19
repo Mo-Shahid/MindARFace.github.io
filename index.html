@@ -2,7 +2,7 @@
 <html>
   <head>
   
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-face.prod.js"></script>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
@@ -12,16 +12,26 @@
     <script>
       document.addEventListener("DOMContentLoaded", function() {
 
-        const sceneEl = document.querySelector('a-scene');
+        
+		const sceneEl = document.querySelector('a-scene');
+		
 
 	    const saudiHair = document.querySelector("#saudiHair");       
         const saudiGlass = document.querySelector("#saudiGlass");
         const saudiRiyadh = document.querySelector("#saudiRiyadh");
         const saudiHelmet = document.querySelector("#saudiHelmet");
         const saudiCartoonFace = document.querySelector("#saudiCartoonFace");
+	
 
         sceneEl.addEventListener("targetFound", event => {
             //console.log("target found");
+
+			//videow.width ='3840px'
+			//videow.height='2160px'
+			
+		sceneEl.style='top: 840px;left: -840px;width: 3840px;height: 2160px;'
+		videow = document.getElementsByTagName("video")[0];
+		videow.style ='position: absolute; top: 840px; left: -840px; z-index: -2; width: 3840px; height: 2160px;'
         });
 
         sceneEl.addEventListener("targetLost", event => {
@@ -80,13 +90,13 @@
 
   <style>
  div {
-  height: 100%;
-  width: 100%; 
+  height: 3840px;
+  width: 2160px; 
 	}
 	
 .innercontainer {
-  width: 100%;
-  height: 100%;
+  width: 3840px%;
+  height: 2160px%;
   transform: rotateY(180deg);
   transform-style: preserve-3d;
   transition: all 1.0s linear;
@@ -97,8 +107,8 @@
     .ar-container {
       overflow: hidden;
       position: absolute;
-      width:100%;
-      height:100%;
+      width:3840px%;
+      height:2160px%;
       -webkit-transform: scaleX(-1);
 	 
       transform: scaleX(-1);
@@ -107,8 +117,8 @@
     img
 	{
       display:block;
-      width:100%;
-      height:100%;
+      width:2160px;
+      height:3840px%;
       object-fit: cover;
       position: absolute;
     }
@@ -120,14 +130,13 @@
   text-align:bottom;
 }
 	.rotated {
-   /* Equal to rotateZ(45deg) */
+  transform: rotate(270deg); /* Equal to rotateZ(45deg) */
   
 }
   </style>
 
   </head>
   <body>
-  
     <div class="ar-container">
 	<div class="overlay">
     <img src="./overlayMirrored.png" alt="test">
